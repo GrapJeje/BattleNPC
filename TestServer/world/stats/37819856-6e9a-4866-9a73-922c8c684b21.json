@@ -1,44 +1,44 @@
 {
   "stats": {
-    "minecraft:picked_up": {
-      "minecraft:diamond_sword": 1
+    "minecraft:crafted": {
+      "minecraft:leather_helmet": 2
     },
     "minecraft:custom": {
       "minecraft:interact_with_crafting_table": 1,
-      "minecraft:time_since_rest": 5661,
-      "minecraft:walk_one_cm": 18810,
-      "minecraft:leave_game": 19,
-      "minecraft:mob_kills": 8,
+      "minecraft:time_since_rest": 8743,
+      "minecraft:walk_one_cm": 21217,
+      "minecraft:leave_game": 20,
+      "minecraft:mob_kills": 10,
       "minecraft:damage_taken": 250,
-      "minecraft:damage_dealt": 9762,
-      "minecraft:play_time": 69166,
-      "minecraft:jump": 264,
-      "minecraft:time_since_death": 5626,
-      "minecraft:sprint_one_cm": 9928,
+      "minecraft:damage_dealt": 11447,
+      "minecraft:play_time": 72248,
+      "minecraft:jump": 296,
+      "minecraft:time_since_death": 8708,
+      "minecraft:sprint_one_cm": 10519,
       "minecraft:interact_with_smithing_table": 1,
       "minecraft:fall_one_cm": 550,
-      "minecraft:total_world_time": 69166,
-      "minecraft:fly_one_cm": 111289,
-      "minecraft:crouch_one_cm": 6,
-      "minecraft:sneak_time": 158,
+      "minecraft:total_world_time": 72248,
+      "minecraft:fly_one_cm": 115511,
+      "minecraft:crouch_one_cm": 190,
+      "minecraft:sneak_time": 176,
       "minecraft:deaths": 1
-    },
-    "minecraft:used": {
-      "minecraft:crafting_table": 1,
-      "minecraft:diamond_sword": 80,
-      "minecraft:smithing_table": 1,
-      "minecraft:leather_helmet": 1
-    },
-    "minecraft:killed": {
-      "minecraft:mannequin": 6,
-      "minecraft:creeper": 1,
-      "minecraft:spider": 1
     },
     "minecraft:killed_by": {
       "minecraft:mannequin": 1
     },
-    "minecraft:crafted": {
-      "minecraft:leather_helmet": 2
+    "minecraft:killed": {
+      "minecraft:mannequin": 8,
+      "minecraft:creeper": 1,
+      "minecraft:spider": 1
+    },
+    "minecraft:picked_up": {
+      "minecraft:diamond_sword": 1
+    },
+    "minecraft:used": {
+      "minecraft:crafting_table": 1,
+      "minecraft:diamond_sword": 96,
+      "minecraft:smithing_table": 1,
+      "minecraft:leather_helmet": 1
     }
   },
   "DataVersion": 4671

@@ -12,6 +12,7 @@ import org.bukkit.block.Block;
 import org.bukkit.entity.Mannequin;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 public class FallingAttack extends Attack {
@@ -86,15 +87,17 @@ public class FallingAttack extends Attack {
 
     @Override
     protected void cleanup() {
-        blockCacheList.forEach(block -> {
+        Iterator<BlockCache> iterator = blockCacheList.iterator();
+        while (iterator.hasNext()) {
+            BlockCache block = iterator.next();
             Block blockToTransform = npc.getNpc().getLocation().getWorld().getBlockAt(block.location);
             blockToTransform.setType(block.material);
-            blockCacheList.remove(block);
 
+            iterator.remove();
             // Have a 10% chance to add a sound to the block
             if (Math.random() < .1)
                 block.location.getWorld().playSound(block.location, Sound.BLOCK_FIRE_EXTINGUISH, .3f, 1f);
-        });
+        }
         super.cleanup();
     }
 
