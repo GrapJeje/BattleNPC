@@ -8,4 +8,6 @@ load: POSTWORLD
 authors: [ GrapJeje ]
 website: https://grapjeje.nl/
 
-depend: [NpcPlugin]
+commands:
+  battlenpc:
+    description: Main plugin command /battlenpc to spawn the boss

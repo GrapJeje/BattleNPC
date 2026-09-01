@@ -1,0 +1,29 @@
+{
+  "stats": {
+    "minecraft:custom": {
+      "minecraft:interact_with_crafting_table": 1,
+      "minecraft:time_since_rest": 14896,
+      "minecraft:walk_one_cm": 1923,
+      "minecraft:leave_game": 6,
+      "minecraft:play_time": 14896,
+      "minecraft:damage_dealt": 106,
+      "minecraft:jump": 26,
+      "minecraft:time_since_death": 14896,
+      "minecraft:sprint_one_cm": 1769,
+      "minecraft:interact_with_smithing_table": 1,
+      "minecraft:total_world_time": 14896,
+      "minecraft:fly_one_cm": 16220,
+      "minecraft:crouch_one_cm": 6,
+      "minecraft:sneak_time": 29
+    },
+    "minecraft:crafted": {
+      "minecraft:leather_helmet": 2
+    },
+    "minecraft:used": {
+      "minecraft:crafting_table": 1,
+      "minecraft:smithing_table": 1,
+      "minecraft:leather_helmet": 1
+    }
+  },
+  "DataVersion": 4671
+}

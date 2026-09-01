@@ -1,6 +1,8 @@
 package nl.grapjeje.battleNPC;
 
 import lombok.Getter;
+import nl.grapjeje.battleNPC.commands.BattleNpcCommand;
+import nl.grapjeje.battleNPC.utils.SkinUtil;
 import nl.grapjeje.core.Framework;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -15,6 +17,11 @@ public final class Main extends JavaPlugin {
         instance = this;
         framework = Framework.init(this);
 
+        // Save all the skin files
+        SkinUtil.saveAllSkins();
+
+        // Commands
+        framework.registerCommand(BattleNpcCommand::new);
     }
 
     @Override

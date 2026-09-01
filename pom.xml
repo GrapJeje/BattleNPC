@@ -55,10 +55,6 @@
             <id>papermc-repo</id>
             <url>https://repo.papermc.io/repository/maven-public/</url>
         </repository>
-        <repository>
-            <id>jitpack.io</id>
-            <url>https://jitpack.io</url>
-        </repository>
     </repositories>
 
     <dependencies>
@@ -67,11 +63,6 @@
             <artifactId>paper-api</artifactId>
             <version>1.21.11-R0.1-SNAPSHOT</version>
             <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>com.github.Eisi05</groupId>
-            <artifactId>NpcApi</artifactId>
-            <version>3.3.4</version>
         </dependency>
         <dependency>
             <groupId>nl.grapjeje</groupId>
