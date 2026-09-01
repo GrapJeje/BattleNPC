@@ -1,0 +1,9 @@
+name: BattleNPC
+version: '${version}'
+
+main: nl.grapjeje.battleNPC.Main
+api-version: '1.21.11'
+load: POSTWORLD
+
+authors: [ GrapJeje ]
+website: https://grapjeje.nl/
