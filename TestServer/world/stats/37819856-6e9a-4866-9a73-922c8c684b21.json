@@ -1,28 +1,35 @@
 {
   "stats": {
+    "minecraft:crafted": {
+      "minecraft:leather_helmet": 2
+    },
     "minecraft:custom": {
       "minecraft:interact_with_crafting_table": 1,
-      "minecraft:time_since_rest": 27709,
-      "minecraft:walk_one_cm": 7183,
-      "minecraft:leave_game": 14,
-      "minecraft:play_time": 27709,
-      "minecraft:damage_dealt": 336,
-      "minecraft:jump": 79,
-      "minecraft:time_since_death": 27709,
-      "minecraft:sprint_one_cm": 4112,
+      "minecraft:time_since_rest": 62704,
+      "minecraft:walk_one_cm": 10811,
+      "minecraft:leave_game": 18,
+      "minecraft:mob_kills": 6,
+      "minecraft:play_time": 62704,
+      "minecraft:damage_dealt": 6881,
+      "minecraft:jump": 186,
+      "minecraft:time_since_death": 62704,
+      "minecraft:sprint_one_cm": 6645,
       "minecraft:interact_with_smithing_table": 1,
-      "minecraft:total_world_time": 27709,
-      "minecraft:fly_one_cm": 61125,
+      "minecraft:total_world_time": 62704,
+      "minecraft:fly_one_cm": 91720,
       "minecraft:crouch_one_cm": 6,
       "minecraft:sneak_time": 115
     },
+    "minecraft:killed": {
+      "minecraft:mannequin": 4,
+      "minecraft:creeper": 1,
+      "minecraft:spider": 1
+    },
     "minecraft:used": {
       "minecraft:crafting_table": 1,
+      "minecraft:diamond_sword": 56,
       "minecraft:smithing_table": 1,
       "minecraft:leather_helmet": 1
-    },
-    "minecraft:crafted": {
-      "minecraft:leather_helmet": 2
     }
   },
   "DataVersion": 4671
