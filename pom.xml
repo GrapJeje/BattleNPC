@@ -73,5 +73,10 @@
             <artifactId>NpcApi</artifactId>
             <version>3.3.4</version>
         </dependency>
+        <dependency>
+            <groupId>nl.grapjeje</groupId>
+            <artifactId>grapjeje-core</artifactId>
+            <version>1.0</version>
+        </dependency>
     </dependencies>
 </project>

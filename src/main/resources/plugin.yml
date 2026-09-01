@@ -7,3 +7,5 @@ load: POSTWORLD
 
 authors: [ GrapJeje ]
 website: https://grapjeje.nl/
+
+depend: [NpcPlugin]
