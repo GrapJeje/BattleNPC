@@ -1,6 +1,7 @@
 package nl.grapjeje.battleNPC.attacks;
 
 import lombok.Getter;
+import nl.grapjeje.battleNPC.BattleNpc;
 import nl.grapjeje.battleNPC.utils.Attack;
 import nl.grapjeje.core.tasks.Task;
 import org.bukkit.Location;
@@ -17,13 +18,15 @@ public class FallingAttack extends Attack {
     @Getter
     static List<BlockCache> blockCacheList = new ArrayList<>();
 
-    public FallingAttack(Mannequin npc) {
+    public FallingAttack(BattleNpc npc) {
         super(npc);
     }
 
     @Override
     public void execute() {
-        Location location = npc.getLocation();
+        if (npc.isAttacking()) return;
+        npc.setAttacking(true);
+        Location location = npc.getNpc().getLocation();
 
         new Task().async().run(() -> {
             // Get random blocks to transform
@@ -37,6 +40,7 @@ public class FallingAttack extends Attack {
                     for (int z = -radius; z <= radius; z++) {
                         Block block = location.getBlock().getRelative(x, y, z);
                         if (block.getType().isAir()) continue;
+                        if (!block.getType().isSolid()) continue;
 
                         if (block.getLocation().distanceSquared(location) <= radius * radius)
                             blocks.add(block);
@@ -55,7 +59,7 @@ public class FallingAttack extends Attack {
             new Task().sync().run(() -> {
                 // Transfer all those blocks into magma
                 blockCacheList.forEach(block -> {
-                    Block blockToTransform = npc.getLocation().getWorld().getBlockAt(block.location);
+                    Block blockToTransform = npc.getNpc().getLocation().getWorld().getBlockAt(block.location);
                     blockToTransform.setType(Material.MAGMA_BLOCK);
 
                     // Have a 50% chance to add smoke above the block
@@ -80,15 +84,18 @@ public class FallingAttack extends Attack {
         });
     }
 
-    void cleanup() {
+    @Override
+    protected void cleanup() {
         blockCacheList.forEach(block -> {
-            Block blockToTransform = npc.getLocation().getWorld().getBlockAt(block.location);
+            Block blockToTransform = npc.getNpc().getLocation().getWorld().getBlockAt(block.location);
             blockToTransform.setType(block.material);
+            blockCacheList.remove(block);
 
             // Have a 10% chance to add a sound to the block
             if (Math.random() < .1)
                 block.location.getWorld().playSound(block.location, Sound.BLOCK_FIRE_EXTINGUISH, .3f, 1f);
         });
+        super.cleanup();
     }
 
     public record BlockCache(Location location, Material material, Long timestamp) {

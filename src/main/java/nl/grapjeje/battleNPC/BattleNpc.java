@@ -2,6 +2,9 @@ package nl.grapjeje.battleNPC;
 
 import com.destroystokyo.paper.profile.ProfileProperty;
 import io.papermc.paper.datacomponent.item.ResolvableProfile;
+import lombok.Getter;
+import lombok.Setter;
+import nl.grapjeje.battleNPC.attacks.DashAttack;
 import nl.grapjeje.battleNPC.attacks.FallingAttack;
 import nl.grapjeje.battleNPC.configs.DefaultConfiguration;
 import nl.grapjeje.core.tasks.Task;
@@ -13,15 +16,21 @@ import org.bukkit.boss.BarColor;
 import org.bukkit.boss.BarStyle;
 import org.bukkit.boss.BossBar;
 import org.bukkit.entity.Mannequin;
+import org.bukkit.entity.Player;
 import org.bukkit.scheduler.BukkitTask;
 
 import java.util.ArrayList;
+import java.util.Optional;
 
 public class BattleNpc {
+    @Getter
     Mannequin npc;
     BossBar bossBar;
 
     BukkitTask tickTask;
+    @Getter
+    @Setter
+    boolean attacking = false;
 
     @SuppressWarnings("UnstableApiUsage")
     public BattleNpc(Location location) {
@@ -99,12 +108,19 @@ public class BattleNpc {
             // Update the counter
             if (fallingBlocks == null) fallingBlocks = 1;
             else fallingBlocks++;
+            return;
         } else {
             // NPC has landed
             if (fallingBlocks != null) {
-                if (fallingBlocks > 2) new FallingAttack(npc).execute();
+                if (fallingBlocks > 2) new FallingAttack(this).execute();
                 fallingBlocks = null;
             }
+        }
+
+        var player = Bukkit.getOnlinePlayers().stream().findFirst();
+
+        if (Math.random() < .3) {
+            new DashAttack(this, player.get()).execute();
         }
     }
 
