@@ -22,7 +22,7 @@ public class BattleNpcCommand implements CreditCommand {
         }
 
         if (args[0].toLowerCase().trim().equals("spawn")) {
-            new BattleNpc(player.getLocation());
+            Main.setBoss(new BattleNpc(player.getLocation()));
             return true;
         }
 

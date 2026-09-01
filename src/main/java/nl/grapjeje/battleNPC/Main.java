@@ -1,24 +1,25 @@
 package nl.grapjeje.battleNPC;
 
 import lombok.Getter;
+import lombok.Setter;
+import nl.grapjeje.battleNPC.attacks.FallingAttack;
 import nl.grapjeje.battleNPC.commands.BattleNpcCommand;
-import nl.grapjeje.battleNPC.utils.SkinUtil;
 import nl.grapjeje.core.Framework;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public final class Main extends JavaPlugin {
     @Getter
-    private static Framework framework;
+    static Framework framework;
     @Getter
-    private static Main instance;
+    static Main instance;
+    @Getter
+    @Setter
+    static BattleNpc boss;
 
     @Override
     public void onEnable() {
         instance = this;
         framework = Framework.init(this);
-
-        // Save all the skin files
-        SkinUtil.saveAllSkins();
 
         // Commands
         framework.registerCommand(BattleNpcCommand::new);
@@ -26,6 +27,11 @@ public final class Main extends JavaPlugin {
 
     @Override
     public void onDisable() {
+        boss.stop();
+        FallingAttack.getBlockCacheList().forEach(block -> {
+            block.location().getBlock().setType(block.material());
+        });
+
         instance = null;
     }
 }

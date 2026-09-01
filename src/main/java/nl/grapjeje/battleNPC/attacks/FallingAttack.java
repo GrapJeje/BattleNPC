@@ -1,5 +1,6 @@
 package nl.grapjeje.battleNPC.attacks;
 
+import lombok.Getter;
 import nl.grapjeje.battleNPC.utils.Attack;
 import nl.grapjeje.core.tasks.Task;
 import org.bukkit.Location;
@@ -13,7 +14,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class FallingAttack extends Attack {
-    List<BlockCache> blockCacheList = new ArrayList<>();
+    @Getter
+    static List<BlockCache> blockCacheList = new ArrayList<>();
 
     public FallingAttack(Mannequin npc) {
         super(npc);
@@ -34,6 +36,7 @@ public class FallingAttack extends Attack {
                 for (int y = -radius; y <= radius; y++) {
                     for (int z = -radius; z <= radius; z++) {
                         Block block = location.getBlock().getRelative(x, y, z);
+                        if (block.getType().isAir()) continue;
 
                         if (block.getLocation().distanceSquared(location) <= radius * radius)
                             blocks.add(block);
@@ -57,10 +60,10 @@ public class FallingAttack extends Attack {
 
                     // Have a 50% chance to add smoke above the block
                     if (Math.random() < .5) {
-                        Location smokeLocation = blockToTransform.getLocation().add(0.5, 1.0, 0.5);
+                        Location smokeLocation = blockToTransform.getLocation().add(.5, 1.0, .5);
 
                         blockToTransform.getWorld().spawnParticle(
-                                Particle.LARGE_SMOKE,
+                                Particle.CAMPFIRE_COSY_SMOKE,
                                 smokeLocation,
                                 5,
                                 0.2,
@@ -70,7 +73,7 @@ public class FallingAttack extends Attack {
                         );
                     }
                 });
-                location.getWorld().playSound(location, Sound.ENTITY_GENERIC_EXPLODE, 1.5f, 0.7f);
+                location.getWorld().playSound(location, Sound.ENTITY_GENERIC_EXPLODE, 1.5f, .7f);
             });
 
             new Task().sync().runLater(this::cleanup, 120L);
@@ -84,7 +87,7 @@ public class FallingAttack extends Attack {
 
             // Have a 10% chance to add a sound to the block
             if (Math.random() < .1)
-                block.location.getWorld().playSound(block.location, Sound.BLOCK_FIRE_EXTINGUISH, 1f, 1f);
+                block.location.getWorld().playSound(block.location, Sound.BLOCK_FIRE_EXTINGUISH, .3f, 1f);
         });
     }
 
